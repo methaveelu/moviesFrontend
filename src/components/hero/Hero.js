@@ -4,9 +4,17 @@ import Carousel from 'react-material-ui-carousel'//designed to create an image c
 import { Paper } from '@mui/material'// gives like a elevation effect to the element.. shadow effect on the borders of component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlay } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 const Hero = ({movies}) => {
+    //navigate to reviews page
+    const navigate = useNavigate()
+
+    const reviews = (movieId)=>{
+        navigate(`Reviews/${movieId}`)
+    }
+
   return (
     <div>
         <Carousel>
@@ -31,7 +39,14 @@ const Hero = ({movies}) => {
                                                     />
                                                 </div>
                                             </Link>
+                                            <div className='movie-review-button-container'>
+                                                <Button variant='info' onClick={()=>reviews(movie.imdbId)}>
+                                                    Reviews
+                                                </Button>
+
+                                            </div>
                                         </div>
+
                                         
                                     </div>
                                     
